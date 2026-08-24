@@ -1,18 +1,26 @@
-Nabla Variable Font
-===================
+Grenze Gotisch Variable Font
+============================
 
-This download contains Nabla as both a variable font and static fonts.
+This download contains Grenze Gotisch as both a variable font and static fonts.
 
-Nabla is a variable font with these axes:
-  EDPT
-  EHLT
+Grenze Gotisch is a variable font with this axis:
+  wght
 
 This means all the styles are contained in a single file:
-  Nabla-Regular-VariableFont_EDPT,EHLT.ttf
+  GrenzeGotisch-VariableFont_wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Nabla:
+in those cases you can use the static font files for Grenze Gotisch:
+  static/GrenzeGotisch-Thin.ttf
+  static/GrenzeGotisch-ExtraLight.ttf
+  static/GrenzeGotisch-Light.ttf
+  static/GrenzeGotisch-Regular.ttf
+  static/GrenzeGotisch-Medium.ttf
+  static/GrenzeGotisch-SemiBold.ttf
+  static/GrenzeGotisch-Bold.ttf
+  static/GrenzeGotisch-ExtraBold.ttf
+  static/GrenzeGotisch-Black.ttf
 
 Get started
 -----------

@@ -84,7 +84,7 @@ const changingText =
 const words = [
 
     {
-        text: "web developer.",
+        text: "Web developer.",
         font: "Fondamento",
         weight: "Regular 400 italic"
     },
@@ -243,3 +243,4 @@ function typeEffect() {
 
 // Start typing
 typeEffect();
+
