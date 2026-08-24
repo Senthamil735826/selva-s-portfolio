@@ -1863,58 +1863,141 @@ body {
 @media (max-width: 768px) {
 
     #projects {
-
         min-height: auto;
-
-        padding: 90px 25px;
+        padding: 80px 20px 100px;
     }
 
+    .projects-title {
+        margin-bottom: 40px;
+    }
 
     .projects-title h2 {
-
         font-size: 40px;
     }
 
-
     .projects-grid {
-
         grid-template-columns: 1fr;
-
-        gap: 55px;
-
+        gap: 75px;
         perspective: none;
     }
 
+    /* ============================= */
+    /* MOBILE PROJECT CARD */
+    /* ============================= */
 
     .project-card {
+        width: 100%;
 
-        min-height: 360px;
+        min-height: 390px;
 
-        padding: 30px 25px;
+        padding: 32px 25px;
+
+        box-sizing: border-box;
 
         border-radius: 28px;
+
+        /* Don't let the card create horizontal overflow */
+        max-width: 100%;
+
+        /* Keep the glass effect */
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
     }
 
-
+    /* Remove desktop tilt */
     .project-card:hover {
-
-        transform:
-            translateY(-6px)
-            scale(1.01);
+        transform: translateY(-5px);
     }
 
+    /* ============================= */
+    /* ICON */
+    /* ============================= */
+
+    .project-icon {
+        width: 58px;
+        height: 58px;
+
+        font-size: 36px;
+
+        margin-bottom: 22px;
+    }
+
+    /* ============================= */
+    /* PROJECT TITLE */
+    /* ============================= */
+
+    .project-info h3 {
+        font-size: 23px;
+
+        margin-bottom: 14px;
+    }
+
+    /* ============================= */
+    /* DESCRIPTION */
+    /* ============================= */
+
+    .project-info p {
+        max-width: 100%;
+
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+    /* ============================= */
+    /* TAGS */
+    /* ============================= */
+
+    .project-tags {
+        gap: 7px;
+
+        margin-top: 22px;
+    }
+
+    .project-tags span {
+        padding: 6px 11px;
+
+        font-size: 11px;
+    }
+
+    /* ============================= */
+    /* VIEW PROJECT */
+    /* ============================= */
 
     .project-link {
+        right: 50%;
 
-        right: 20px;
+        transform: translateX(50%);
 
-        bottom: -25px;
+        bottom: -26px;
 
-        width: 140px;
+        width: 145px;
 
         height: 52px;
 
-        border-radius: 19px;
+        border-radius: 18px;
+
+        font-size: 13px;
+    }
+
+    .project-link:hover {
+        transform:
+            translateX(50%)
+            translateY(-4px)
+            scale(1.03);
+    }
+
+    /* ============================= */
+    /* NOTCH */
+    /* ============================= */
+
+    .project-notch {
+        width: 160px !important;
+
+        height: 90px !important;
+
+        right: 0;
+        bottom: 0;
     }
 }
 
@@ -1926,68 +2009,116 @@ body {
 @media (max-width: 480px) {
 
     #projects {
-
-        padding: 75px 18px;
+        padding: 70px 16px 95px;
     }
 
+    .projects-title {
+        margin-bottom: 35px;
+    }
 
     .projects-title h2 {
-
         font-size: 34px;
     }
 
-
     .projects-title p {
-
-        font-size: 16px;
+        font-size: 15px;
     }
-
 
     .projects-grid {
-
-        gap: 50px;
+        gap: 70px;
     }
 
+    /* ============================= */
+    /* CARD */
+    /* ============================= */
 
     .project-card {
-
-        min-height: 350px;
+        min-height: 365px;
 
         padding: 28px 22px;
 
         border-radius: 25px;
     }
 
+    /* ============================= */
+    /* ICON */
+    /* ============================= */
 
     .project-icon {
+        width: 54px;
+        height: 54px;
 
-        width: 55px;
-        height: 55px;
+        font-size: 33px;
 
-        font-size: 35px;
+        margin-bottom: 20px;
     }
 
+    /* ============================= */
+    /* TITLE */
+    /* ============================= */
 
     .project-info h3 {
-
-        font-size: 22px;
+        font-size: 21px;
     }
 
+    /* ============================= */
+    /* DESCRIPTION */
+    /* ============================= */
 
     .project-info p {
-
-        font-size: 14px;
+        font-size: 13px;
 
         line-height: 1.6;
     }
 
+    /* ============================= */
+    /* TAGS */
+    /* ============================= */
+
+    .project-tags {
+        margin-top: 20px;
+    }
+
+    .project-tags span {
+        padding: 5px 10px;
+
+        font-size: 10px;
+    }
+
+    /* ============================= */
+    /* VIEW PROJECT */
+    /* ============================= */
 
     .project-link {
+        right: 50%;
+
+        bottom: 20px;
 
         width: 135px;
-        height: 50px;
-        right: 18px;
-        bottom: -24px;
-        font-size: 13px;
+
+        height: 49px;
+
+        font-size: 12px;
+
+        border-radius: 17px;
+
+        transform: translateX(50%);
+    }
+
+    .project-link:hover {
+        transform:
+            translateX(50%)
+            translateY(-4px)
+            scale(1.03);
+    }
+
+    /* ============================= */
+    /* NOTCH */
+    /* ============================= */
+
+    .project-notch {
+        width: 145px !important;
+
+        height: 82px !important;
     }
 }
