@@ -71,6 +71,17 @@ window.addEventListener("resize", () => {
 
 });
 
+const themeToggle =
+    document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("change", () => {
+
+    document.body.classList.toggle(
+        "dark-mode",
+        themeToggle.checked
+    );
+
+});
 
 // ================================
 // TYPING EFFECT
@@ -243,4 +254,162 @@ function typeEffect() {
 
 // Start typing
 typeEffect();
+
+/* ================================================= */
+/* ABOUT SCROLL REVEAL */
+/* ================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const aboutSection = document.getElementById("about");
+
+    if (!aboutSection) return;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    aboutSection.classList.add("about-visible");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.2
+        }
+    );
+
+    observer.observe(aboutSection);
+
+});
+
+/* ================================================= */
+/* CONTACT FORM */
+/* ================================================= */
+
+const contactForm =
+    document.querySelector(".contact-form");
+
+
+const scriptURL =
+    "https://script.google.com/macros/s/AKfycbxA2Mxelo2J84iqbOKMhnYlINFe9ioWS-SOxzDuQviGEmq1Xt1pt7fRAE4HwvATlPLErQ/exec";
+
+
+contactForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.querySelector(
+                'input[name="name"]'
+            ).value.trim();
+
+
+        const email =
+            document.querySelector(
+                'input[name="email"]'
+            ).value.trim();
+
+
+        const message =
+            document.querySelector(
+                'textarea[name="message"]'
+            ).value.trim();
+
+
+        if (!name || !email || !message) {
+
+            alert(
+                "Please fill in all fields."
+            );
+
+            return;
+        }
+
+
+        const button =
+            document.querySelector(
+                ".contact-button"
+            );
+
+
+        const originalText =
+            button.innerHTML;
+
+
+        button.disabled = true;
+
+        button.innerHTML =
+            "Sending...";
+
+
+        try {
+
+            await fetch(
+                scriptURL,
+                {
+                    method: "POST",
+
+                    mode: "no-cors",
+
+                    headers: {
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body: JSON.stringify({
+
+                        name: name,
+
+                        email: email,
+
+                        message: message
+
+                    })
+                }
+            );
+
+
+            /* SUCCESS */
+
+            contactForm.reset();
+
+
+            button.innerHTML =
+                "Message Sent ✓";
+
+
+            setTimeout(() => {
+
+                button.innerHTML =
+                    originalText;
+
+                button.disabled = false;
+
+            }, 3000);
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            button.innerHTML =
+                "Try Again";
+
+
+            button.disabled = false;
+
+        }
+
+    }
+);
 

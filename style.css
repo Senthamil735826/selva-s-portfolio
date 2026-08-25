@@ -7,6 +7,10 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ================================================= */
+/* BODY BACKGROUND */
+/* ================================================= */
+
 body {
     background: linear-gradient(
         120deg,
@@ -15,22 +19,246 @@ body {
         #4c42fe 75%,
         #ffa97b 100%
     );
+
     background-attachment: fixed;
+    background-size: 300% 300%;
+
+    animation: backgroundMove 18s ease-in-out infinite;
 }
 
-/* Tablet */
+
+/* ================================================= */
+/* BACKGROUND ANIMATION */
+/* ================================================= */
+
+@keyframes backgroundMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ================================================= */
+/* GLOBAL GLOW STAR FIELD */
+/* ================================================= */
+
+.star-field {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* ================================================= */
+/* STARS */
+/* ================================================= */
+
+.star-field span {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 0 6px rgba(255, 255, 255, 0.8),
+        0 0 14px rgba(255, 215, 100, 0.45);
+
+    animation:
+        starFloat 5s ease-in-out infinite,
+        starGlow 3s ease-in-out infinite;
+}
+
+
+/* ================================================= */
+/* STAR POSITIONS */
+/* ================================================= */
+
+.star-field span:nth-child(1) {
+    left: 8%;
+    top: 15%;
+    animation-delay: 0s;
+}
+
+.star-field span:nth-child(2) {
+    left: 18%;
+    top: 65%;
+    animation-delay: 1s;
+}
+
+.star-field span:nth-child(3) {
+    left: 27%;
+    top: 30%;
+    animation-delay: 2s;
+}
+
+.star-field span:nth-child(4) {
+    left: 36%;
+    top: 80%;
+    animation-delay: 0.5s;
+}
+
+.star-field span:nth-child(5) {
+    left: 45%;
+    top: 18%;
+    animation-delay: 1.5s;
+}
+
+.star-field span:nth-child(6) {
+    left: 53%;
+    top: 55%;
+    animation-delay: 3s;
+}
+
+.star-field span:nth-child(7) {
+    left: 62%;
+    top: 25%;
+    animation-delay: 2.5s;
+}
+
+.star-field span:nth-child(8) {
+    left: 70%;
+    top: 75%;
+    animation-delay: 1.2s;
+}
+
+.star-field span:nth-child(9) {
+    left: 78%;
+    top: 42%;
+    animation-delay: 3.5s;
+}
+
+.star-field span:nth-child(10) {
+    left: 86%;
+    top: 18%;
+    animation-delay: 0.8s;
+}
+
+.star-field span:nth-child(11) {
+    left: 92%;
+    top: 65%;
+    animation-delay: 2.2s;
+}
+
+.star-field span:nth-child(12) {
+    left: 12%;
+    top: 42%;
+    animation-delay: 3.2s;
+}
+
+.star-field span:nth-child(13) {
+    left: 40%;
+    top: 45%;
+    animation-delay: 1.8s;
+}
+
+.star-field span:nth-child(14) {
+    left: 58%;
+    top: 85%;
+    animation-delay: 4s;
+}
+
+.star-field span:nth-child(15) {
+    left: 94%;
+    top: 35%;
+    animation-delay: 2.8s;
+}
+
+
+/* ================================================= */
+/* FLOATING MOVEMENT */
+/* ================================================= */
+
+@keyframes starFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0);
+    }
+
+    50% {
+        transform:
+            translate(8px, -18px);
+    }
+}
+
+
+/* ================================================= */
+/* GLOW / TWINKLE */
+/* ================================================= */
+
+@keyframes starGlow {
+
+    0%,
+    100% {
+        opacity: 0.25;
+
+        box-shadow:
+            0 0 4px rgba(255, 255, 255, 0.4),
+            0 0 8px rgba(255, 215, 100, 0.2);
+    }
+
+    50% {
+        opacity: 1;
+
+        box-shadow:
+            0 0 8px rgba(255, 255, 255, 0.9),
+            0 0 18px rgba(255, 215, 100, 0.7),
+            0 0 30px rgba(255, 215, 100, 0.25);
+    }
+}
+
+/* ================================================= */
+/* TABLET */
+/* ================================================= */
+
 @media (max-width: 1024px) {
+
     /* tablet adjustments */
+
 }
 
-/* Mobile */
+
+/* ================================================= */
+/* MOBILE */
+/* ================================================= */
+
 @media (max-width: 768px) {
+
     /* mobile adjustments */
+
 }
 
-/* Small mobile */
+
+/* ================================================= */
+/* SMALL MOBILE */
+/* ================================================= */
+
 @media (max-width: 480px) {
+
     /* small phone adjustments */
+
 }
 
 .logo {
@@ -71,7 +299,7 @@ body {
     align-items: center;
 
     width: 95%;
-    height: 70px;
+    height: 72px;
     padding: 1rem;
 
     position: fixed;
@@ -203,9 +431,9 @@ body {
 }
 
 
-/* ============================= */
-/* GLASS SHINE */
-/* ============================= */
+/* ================================================= */
+/* NAV LINK GLASS SHINE - LIGHT MODE */
+/* ================================================= */
 
 .nav-links a::before {
     content: "";
@@ -227,9 +455,38 @@ body {
 
     transform: skewX(-25deg);
 
-    transition: left 0.7s ease;
+    transition:
+        left 0.7s ease,
+        background 0.5s ease;
 
     pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* ================================================= */
+/* HOVER */
+/* ================================================= */
+
+.nav-links a:hover::before {
+    left: 120%;
+}
+
+
+/* ================================================= */
+/* DARK MODE - GOLDEN SHINE */
+/* ================================================= */
+
+body.dark-mode .nav-links a::before {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(212, 175, 55, 0.75),
+        rgba(255, 215, 100, 0.9),
+        rgba(212, 175, 55, 0.75),
+        transparent
+    );
 }
 
 
@@ -250,11 +507,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    margin-left: auto;
     gap: 5px;
 
     width: 45px;
     height: 45px;
+    
 
     background: rgba(255, 255, 255, 0.08);
 
@@ -284,6 +542,7 @@ body {
 .hamburger span {
     width: 24px;
     height: 3px;
+    
 
     background: white;
 
@@ -446,6 +705,249 @@ body {
 
 .hamburger.active span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ================================================= */
+/* THEME SWITCH */
+/* ================================================= */
+
+.theme-switch {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 15px;
+}
+
+
+/* Hide checkbox */
+
+#theme-toggle {
+    display: none;
+}
+
+
+/* =============================ht==================== */
+/* VERTICAL GLASS SLIDER */
+/* ================================================= */
+
+.theme-slider {
+
+    position: relative;
+
+    width: 30px;
+    height: 60px;
+
+    display: block;
+
+    cursor: pointer;
+
+    border-radius: 50px;
+
+    /* Clear glass */
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.20),
+            rgba(255, 255, 255, 0.06)
+        );
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+
+        inset 0 1px 2px rgba(255, 255, 255, 0.55),
+
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+
+        0 5px 15px rgba(0, 0, 0, 0.3);
+
+    transition:
+        background 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+
+/* ================================================= */
+/* SLIDER KNOB */
+/* ================================================= */
+
+.theme-knob {
+
+    position: absolute;
+
+    left:3px;
+    top:3px;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #dddddd
+        );
+
+    box-shadow:
+
+        0 3px 8px rgba(0, 0, 0, 0.4),
+
+        inset 0 1px 2px
+        rgba(255, 255, 255, 0.9);
+
+    transition:
+        top 0.45s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+        background 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+
+/* ================================================= */
+/* ICONS */
+/* ================================================= */
+
+.theme-icon {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 12px;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        color 0.35s ease;
+}
+
+
+.sun {
+
+    top: 8px;
+
+    color: #d4af37;
+
+    opacity: 0;
+}
+
+
+.moon {
+
+    bottom: 8px;
+
+    color: white;
+
+    opacity: 1;
+}
+
+
+/* ================================================= */
+/* LIGHT MODE */
+/* ================================================= */
+
+#theme-toggle:checked + .theme-slider {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(212, 175, 55, 0.30),
+            rgba(255, 255, 255, 0.08)
+        );
+
+    box-shadow:
+
+        inset 0 1px 2px rgba(255, 255, 255, 0.7),
+
+        0 5px 18px rgba(212, 175, 55, 0.25);
+}
+
+
+/* Move knob DOWN */
+
+#theme-toggle:checked + .theme-slider .theme-knob {
+
+    top: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffd966,
+            #d4af37
+        );
+
+    box-shadow:
+
+        0 3px 10px rgba(0, 0, 0, 0.45),
+
+        0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+
+/* Icons */
+
+#theme-toggle:checked + .theme-slider .sun {
+
+    opacity: 1;
+}
+
+
+#theme-toggle:checked + .theme-slider .moon {
+
+    opacity: 0;
+}
+
+/* ================================================= */
+/* DARK MODE */
+/* ================================================= */
+
+body.dark-mode {
+
+    background:
+        linear-gradient(
+            135deg,
+            #000000 0%,
+            #080000 30%,
+            #1a0000 55%,
+            #300000 75%,
+            #050505 100%
+        );
+
+    background-attachment: fixed;
+
+    background-size: 200% 200%;
+
+    animation:
+        darkRedFlow 20s ease infinite;
+}
+
+
+@keyframes darkRedFlow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* ============================= */
@@ -802,81 +1304,538 @@ body {
 
 }
 
-/* ============================= */
-/* ABOUT SECTION - DESKTOP */
-/* ============================= */
+/* ================================================= */
+/* ABOUT SECTION */
+/* ================================================= */
 
 #about {
-    min-height: 20vh;
+    position: relative;
+
+    min-height: 100vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 100px 10%;
+
     box-sizing: border-box;
+    overflow: hidden;
 }
 
+
+/* ================================================= */
+/* CONTENT */
+/* ================================================= */
+
 .about-content {
+    position: relative;
+    z-index: 5;
+
     width: 100%;
     max-width: 1100px;
+
     display: grid;
     grid-template-columns: 1fr 2fr;
+
     gap: 80px;
+
     align-items: center;
 }
 
-.about-title p {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color:white;
+
+/* ================================================= */
+/* LEFT TITLE */
+/* ================================================= */
+
+.about-title {
+    position: relative;
+
+    padding-left: 35px;
+
+    opacity: 1;
+    transform: translateX(0);
+
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.22, 1, .36, 1);
 }
 
-.about-title h2 {
-    color:white;
-    font-size: 55px;
-    margin: 0;
+
+/* ================================================= */
+/* GOLD LINE */
+/* ================================================= */
+
+.about-line {
+    position: absolute;
+
+    left: 0;
+    top: 5px;
+
+    width: 3px;
+    height: 100%;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        180deg,
+        transparent,
+        #d4af37,
+        #fff1a8,
+        #d4af37,
+        transparent
+    );
+
+    box-shadow:
+        0 0 10px rgba(212, 175, 55, 0.5),
+        0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+
+/* ================================================= */
+/* SMALL TITLE */
+/* ================================================= */
+
+.about-title p {
+    font-size: 25px;
+
+    margin-bottom: 10px;
+
+    color: white;
+
     font-family: "Bona Nova SC", serif;
+
+    font-weight: 400;
+}
+
+
+/* ================================================= */
+/* MAIN TITLE */
+/* ================================================= */
+
+.about-title h2 {
+    margin: 0;
+
+    font-size: 100px;
+
+    line-height: 0.95;
+
+    font-family: "Bona Nova SC", serif;
+
     font-weight: 900;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f5d76e,
+        #ffffff,
+        #d4af37
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    background-size: 200% auto;
+
+    animation: aboutTitleGold 6s ease-in-out infinite;
+}
+
+
+@keyframes aboutTitleGold {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* ================================================= */
+/* NUMBER */
+/* ================================================= */
+
+.about-number {
+    display: block;
+
+    margin-top: 30px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* ================================================= */
+/* ABOUT TEXT */
+/* ================================================= */
+
+.about-text {
+    position: relative;
+
+    opacity: 1;
+    transform: translateX(0);
+
+    font-size: 30px;
+
+    line-height: 1.8;
+
+    font-family: "Chelsea Market", system-ui;
+
+    color: #f5d76e;
+
+    background: linear-gradient(
+        90deg,
+        #8a6a00,
+        #c49b25,
+        #f5d76e,
+        #fff1a8,
+        #d4af37,
+        #8a6a00
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    background-size: 250% auto;
+
+    animation: aboutGoldFlow 6s ease-in-out infinite;
+
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+@keyframes aboutGoldFlow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* ================================================= */
+/* PARAGRAPH */
+/* ================================================= */
+
+.about-text p {
+    margin-bottom: 30px;
+
+    font-family: "Chelsea Market", system-ui;
+
+    font-weight: 400;
     font-style: normal;
 }
 
-.about-text {
-    font-size: 20px;
-    line-height: 1.8;
+
+/* ================================================= */
+/* SCROLL ANIMATION */
+/* ================================================= */
+
+/* Only move elements after JS adds this class */
+
+#about:not(.about-visible) .about-title {
+    transform: translateX(-60px);
 }
 
-.about-text p {
-    margin-bottom: 20px;
-    font-family: "Chelsea Market", system-ui;
-    font-weight: 400;
-    font-style: normal; 
+#about:not(.about-visible) .about-text {
+    transform: translateX(60px);
 }
 
-/* ============================= */
-/* ABOUT SECTION - MOBILE */
-/* ============================= */
+#about.about-visible .about-title {
+    transform: translateX(0);
+}
+
+#about.about-visible .about-text {
+    transform: translateX(0);
+}
+
+
+/* ================================================= */
+/* GOLD GLOW */
+/* ================================================= */
+
+.about-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(80px);
+
+    z-index: 0;
+}
+
+
+/* LEFT GLOW */
+
+.about-glow-1 {
+    width: 280px;
+    height: 280px;
+
+    left: 5%;
+    top: 20%;
+
+    background: rgba(212, 175, 55, 0.20);
+
+    animation: aboutGlowOne 8s ease-in-out infinite;
+}
+
+
+@keyframes aboutGlowOne {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(80px, 60px) scale(1.2);
+    }
+}
+
+
+/* RIGHT GLOW */
+
+.about-glow-2 {
+    width: 350px;
+    height: 350px;
+
+    right: 5%;
+    bottom: 5%;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    animation: aboutGlowTwo 10s ease-in-out infinite;
+}
+
+
+@keyframes aboutGlowTwo {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-70px, -50px) scale(1.15);
+    }
+}
+
+
+/* ================================================= */
+/* FLOATING PARTICLES */
+/* ================================================= */
+
+.about-particles {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.about-particles span {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #f5d76e;
+
+    box-shadow:
+        0 0 8px rgba(245, 215, 110, 0.8);
+
+    animation: aboutParticle 6s linear infinite;
+}
+
+
+.about-particles span:nth-child(1) {
+    left: 15%;
+    top: 70%;
+}
+
+.about-particles span:nth-child(2) {
+    left: 28%;
+    top: 25%;
+    animation-delay: 1s;
+}
+
+.about-particles span:nth-child(3) {
+    left: 48%;
+    top: 80%;
+    animation-delay: 2s;
+}
+
+.about-particles span:nth-child(4) {
+    left: 70%;
+    top: 20%;
+    animation-delay: 3s;
+}
+
+.about-particles span:nth-child(5) {
+    left: 85%;
+    top: 65%;
+    animation-delay: 4s;
+}
+
+.about-particles span:nth-child(6) {
+    left: 60%;
+    top: 50%;
+    animation-delay: 5s;
+}
+
+
+@keyframes aboutParticle {
+
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.5);
+    }
+
+    30% {
+        opacity: 0.8;
+    }
+
+    70% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.2);
+    }
+}
+
+
+/* ================================================= */
+/* TABLET */
+/* ================================================= */
+
+@media (max-width: 1024px) {
+
+    #about {
+        padding: 100px 7%;
+    }
+
+    .about-content {
+        gap: 50px;
+    }
+
+    .about-title h2 {
+        font-size: 75px;
+    }
+
+    .about-text {
+        font-size: 24px;
+    }
+}
+
+
+/* ================================================= */
+/* MOBILE */
+/* ================================================= */
 
 @media (max-width: 768px) {
 
     #about {
+        min-height: auto;
+
         padding: 100px 25px;
     }
 
     .about-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+
+        gap: 40px;
+
         text-align: center;
     }
 
+    .about-title {
+        padding-left: 0;
+    }
+
+    .about-line {
+        display: none;
+    }
+
     .about-title h2 {
-        font-size: 40px;
+        font-size: 55px;
+    }
+
+    .about-title p {
+        font-size: 18px;
     }
 
     .about-text {
         font-size: 17px;
+
         line-height: 1.7;
+    }
+
+    .about-glow {
+        opacity: 0.08;
+    }
+
+    .about-particles {
+        opacity: 0.5;
     }
 }
 
+
+/* ================================================= */
+/* SMALL MOBILE */
+/* ================================================= */
+
+@media (max-width: 480px) {
+
+    #about {
+        padding: 80px 18px;
+    }
+
+    .about-title h2 {
+        font-size: 45px;
+    }
+
+    .about-text {
+        font-size: 15px;
+    }
+
+    .about-glow,
+    .about-particles {
+        display: none;
+    }
+}
 /* ============================= */
 /* SKILLS SECTION */
 /* ============================= */
@@ -1482,7 +2441,7 @@ body {
 }
 
 /* ================================================= */
-/* CARD GLASS SHINE */
+/* PROJECT CARD SHINE - LIGHT MODE */
 /* ================================================= */
 
 .project-card .card-shine {
@@ -1503,18 +2462,41 @@ body {
 
     transform: skewX(-25deg);
 
-    transition: left 0.5s ease;
+    transition:
+        left 0.9s ease,
+        background 0.4s ease;
 
     pointer-events: none;
-
+    filter: blur(30px);
     z-index: 4;
 }
 
+
+/* ================================================= */
+/* SHINE ON HOVER */
+/* ================================================= */
+
 .project-card:hover .card-shine {
-    left: 130%;
+    left: 140%;
 }
 
 
+/* ================================================= */
+/* DARK MODE - GOLDEN SHINE */
+/* ================================================= */
+
+body.dark-mode .project-card .card-shine {
+
+    background: linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(138, 106, 0, 0.15) 25%,
+        rgba(212, 175, 55, 0.65) 50%,
+        rgba(255, 241, 168, 0.85) 55%,
+        rgba(212, 175, 55, 0.45) 65%,
+        transparent 100%
+    );
+}
 
 /* ================================================= */
 /* PROJECT CONTENT */
@@ -2120,5 +3102,1130 @@ body {
         width: 145px !important;
 
         height: 82px !important;
+    }
+}
+
+/* ================================================= */
+/* CONTACT SECTION */
+/* ================================================= */
+
+#contact {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 100px 10%;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* ================================================= */
+/* CONTACT CONTENT */
+/* ================================================= */
+
+.contact-content {
+    width: 100%;
+    max-width: 1100px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ================================================= */
+/* CONTACT TITLE */
+/* ================================================= */
+
+.contact-title {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.contact-title p {
+    font-size: 20px;
+
+    margin-bottom: 10px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-family: "Bona Nova SC", serif;
+}
+
+.contact-title h2 {
+    margin: 0;
+
+    font-family: "Bona Nova SC", serif;
+
+    font-size: 65px;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8a6a00,
+            #d4af37,
+            #fff1a8,
+            #d4af37,
+            #8a6a00
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+
+    background-size: 200% auto;
+
+    animation:
+        contactGoldFlow 5s ease-in-out infinite;
+}
+
+
+@keyframes contactGoldFlow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* ================================================= */
+/* CONTACT GLASS CARD */
+/* ================================================= */
+
+.contact-card {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.2fr;
+
+    gap: 60px;
+
+    padding: 55px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.045)
+        );
+
+    backdrop-filter:
+        blur(25px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(25px)
+        saturate(160%);
+
+    border: 1.5px solid
+        rgba(255, 255, 255, 0.30);
+
+    border-radius: 30px;
+
+    box-shadow:
+
+        0 25px 60px
+        rgba(0, 0, 0, 0.30),
+
+        0 8px 25px
+        rgba(0, 0, 0, 0.15),
+
+        inset 0 2px 2px
+        rgba(255, 255, 255, 0.55),
+
+        inset 0 -2px 5px
+        rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
+}
+
+
+/* ================================================= */
+/* CARD HOVER */
+/* ================================================= */
+
+.contact-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(255, 255, 255, 0.45);
+
+    box-shadow:
+
+        0 35px 70px
+        rgba(0, 0, 0, 0.38),
+
+        0 0 35px
+        rgba(255, 255, 255, 0.07),
+
+        inset 0 2px 3px
+        rgba(255, 255, 255, 0.65),
+
+        inset 0 -3px 6px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+/* ================================================= */
+/* TOP GLASS REFLECTION */
+/* ================================================= */
+
+.contact-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 8%;
+
+    width: 84%;
+    height: 1.5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.8),
+            transparent
+        );
+
+    opacity: 0.65;
+
+    pointer-events: none;
+}
+
+
+/* ================================================= */
+/* CONTACT SHINE */
+/* ================================================= */
+
+.contact-shine {
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            105deg,
+            transparent,
+            rgba(255, 255, 255, 0.16),
+            transparent
+        );
+
+    transform: skewX(-25deg);
+
+    transition:
+        left 1.0s ease;
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+.contact-card:hover .contact-shine {
+
+    left: 140%;
+}
+
+
+/* ================================================= */
+/* LEFT SIDE */
+/* ================================================= */
+
+.contact-info {
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+.contact-info h3 {
+
+    margin: 0 0 20px;
+
+    font-family:
+        "Bona Nova SC",
+        serif;
+
+    font-size: 48px;
+
+    line-height: 1.05;
+
+    color: white;
+}
+
+
+.contact-info p {
+
+    max-width: 420px;
+
+    margin-bottom: 35px;
+
+    font-family:
+        "Chelsea Market",
+        system-ui;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255, 255, 255, 0.70);
+}
+
+
+/* ================================================= */
+/* CONTACT ITEMS */
+/* ================================================= */
+
+.contact-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    width: fit-content;
+
+    margin-bottom: 18px;
+
+    padding: 10px 15px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.contact-item i {
+
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 19px;
+
+    color: #f5d76e;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.contact-item:hover {
+
+    transform:
+        translateX(8px);
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    border-color:
+        rgba(212, 175, 55, 0.45);
+}
+
+
+.contact-item:hover i {
+
+    transform:
+        scale(1.15);
+}
+
+
+/* ================================================= */
+/* FORM */
+/* ================================================= */
+
+.contact-form {
+
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+
+/* ================================================= */
+/* INPUT GROUP */
+/* ================================================= */
+
+.input-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.input-group label {
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    color:
+        rgba(255, 255, 255, 0.70);
+}
+
+
+/* ================================================= */
+/* INPUTS */
+/* ================================================= */
+
+.input-group input,
+.input-group textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 15px 17px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.20);
+
+    border-radius: 15px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    color: white;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.input-group textarea {
+
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.38);
+}
+
+
+/* ================================================= */
+/* INPUT FOCUS */
+/* ================================================= */
+
+.input-group input:focus,
+.input-group textarea:focus {
+
+    background:
+        rgba(255, 255, 255, 0.11);
+
+    border-color:
+        rgba(212, 175, 55, 0.65);
+
+    box-shadow:
+
+        0 0 15px
+        rgba(212, 175, 55, 0.12),
+
+        inset 0 1px 2px
+        rgba(255, 255, 255, 0.3);
+}
+
+/* ================================================= */
+/* GLASS MORPHISM - SEND MESSAGE BUTTON */
+/* ================================================= */
+
+.contact-button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    min-width: 170px;
+    height: 52px;
+
+    padding: 0 22px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    /* ============================= */
+    /* CLEAR GLASS */
+    /* ============================= */
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.16),
+            rgba(255, 255, 255, 0.045)
+        );
+
+    backdrop-filter:
+        blur(18px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(160%);
+
+    /* ============================= */
+    /* GLASS BORDER */
+    /* ============================= */
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.32);
+
+    border-radius: 16px;
+
+    /* ============================= */
+    /* GLASS DEPTH */
+    /* ============================= */
+
+    box-shadow:
+
+        0 10px 25px
+        rgba(0, 0, 0, 0.28),
+
+        0 3px 8px
+        rgba(0, 0, 0, 0.15),
+
+        inset 0 1px 2px
+        rgba(255, 255, 255, 0.65),
+
+        inset 0 -2px 4px
+        rgba(0, 0, 0, 0.12);
+
+    color: white;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* ================================================= */
+/* GLASS TOP REFLECTION */
+/* ================================================= */
+
+.contact-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 1px;
+    left: 12%;
+
+    width: 76%;
+    height: 1px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.8),
+            transparent
+        );
+
+    opacity: 0.6;
+
+    pointer-events: none;
+}
+
+
+/* ================================================= */
+/* GLASS HOVER */
+/* ================================================= */
+
+.contact-button:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.24),
+            rgba(255, 255, 255, 0.07)
+        );
+
+    border-color:
+        rgba(255, 255, 255, 0.48);
+
+    box-shadow:
+
+        0 18px 35px
+        rgba(0, 0, 0, 0.35),
+
+        0 0 20px
+        rgba(255, 255, 255, 0.07),
+
+        inset 0 2px 3px
+        rgba(255, 255, 255, 0.75),
+
+        inset 0 -2px 5px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+/* ================================================= */
+/* MAIL ICON */
+/* ================================================= */
+
+.mail-icon {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    z-index: 3;
+
+    transition:
+        transform 0.45s
+        cubic-bezier(.22, 1, .36, 1);
+}
+
+
+.mail-icon i {
+
+    font-size: 18px;
+
+    color: white;
+
+    transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+}
+
+
+/* ================================================= */
+/* MAIL HOVER */
+/* ================================================= */
+
+.contact-button:hover .mail-icon {
+
+    transform:
+        translateX(8px)
+        rotate(-8deg);
+}
+
+
+.contact-button:hover .mail-icon i {
+
+    animation:
+        mailCourier
+        0.9s
+        cubic-bezier(.22, 1, .36, 1);
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255, 255, 255, 0.6)
+        );
+}
+
+
+/* ================================================= */
+/* MAIL ANIMATION */
+/* ================================================= */
+
+@keyframes mailCourier {
+
+    0% {
+        transform:
+            translateX(0)
+            rotate(0deg)
+            scale(1);
+
+        opacity: 1;
+    }
+
+    25% {
+        transform:
+            translateX(4px)
+            translateY(-3px)
+            rotate(-8deg)
+            scale(1.05);
+    }
+
+    55% {
+        transform:
+            translateX(15px)
+            translateY(-8px)
+            rotate(-12deg)
+            scale(1.1);
+
+        opacity: 1;
+    }
+
+    75% {
+        transform:
+            translateX(28px)
+            translateY(-4px)
+            rotate(-8deg)
+            scale(0.9);
+
+        opacity: 0.7;
+    }
+
+    100% {
+        transform:
+            translateX(42px)
+            translateY(0)
+            rotate(0deg)
+            scale(0.6);
+
+        opacity: 0;
+    }
+}
+
+
+/* ================================================= */
+/* MAIL RETURN */
+/* ================================================= */
+
+.contact-button:not(:hover) .mail-icon i {
+
+    animation:
+        mailReturn
+        0.4s ease;
+}
+
+
+@keyframes mailReturn {
+
+    from {
+        transform:
+            translateX(20px);
+
+        opacity: 0;
+    }
+
+    to {
+        transform:
+            translateX(0);
+
+        opacity: 1;
+    }
+}
+
+
+/* ================================================= */
+/* MAIL TRAIL */
+/* ================================================= */
+
+.contact-button .mail-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 25px;
+    height: 2px;
+
+    right: 45px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.45)
+        );
+
+    filter: blur(1px);
+
+    opacity: 0;
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+.contact-button:hover .mail-icon::before {
+
+    opacity: 1;
+}
+
+
+/* ================================================= */
+/* DARK MODE - GOLD GLASS */
+/* ================================================= */
+
+body.dark-mode .contact-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.13),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border-color:
+        rgba(212, 175, 55, 0.35);
+
+    box-shadow:
+
+        0 10px 28px
+        rgba(0, 0, 0, 0.4),
+
+        0 0 18px
+        rgba(212, 175, 55, 0.08),
+
+        inset 0 1px 2px
+        rgba(255, 241, 168, 0.55),
+
+        inset 0 -2px 4px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* ================================================= */
+/* DARK MODE HOVER */
+/* ================================================= */
+
+body.dark-mode .contact-button:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.25),
+            rgba(255, 255, 255, 0.06)
+        );
+
+    border-color:
+        rgba(255, 215, 100, 0.65);
+
+    box-shadow:
+
+        0 18px 38px
+        rgba(0, 0, 0, 0.45),
+
+        0 0 25px
+        rgba(212, 175, 55, 0.18),
+
+        inset 0 2px 4px
+        rgba(255, 241, 168, 0.7),
+
+        inset 0 -2px 5px
+        rgba(0, 0, 0, 0.3);
+}
+
+
+/* ================================================= */
+/* DARK MODE MAIL */
+/* ================================================= */
+
+body.dark-mode .mail-icon i {
+
+    color: #d4af37;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(212, 175, 55, 0.4)
+        );
+}
+
+
+body.dark-mode .contact-button:hover .mail-icon i {
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255, 215, 100, 0.9)
+        );
+}
+
+
+/* ================================================= */
+/* DARK MODE MAIL TRAIL */
+/* ================================================= */
+
+body.dark-mode .contact-button .mail-icon::before {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212, 175, 55, 0.8)
+        );
+
+    filter:
+        blur(1px);
+}
+
+/* ================================================= */
+/* TABLET */
+/* ================================================= */
+
+@media (max-width: 1024px) {
+
+    #contact {
+
+        padding:
+            90px 7%;
+    }
+
+    .contact-card {
+
+        gap: 40px;
+
+        padding: 40px;
+    }
+
+    .contact-info h3 {
+
+        font-size: 40px;
+    }
+
+    .contact-title h2 {
+
+        font-size: 55px;
+    }
+}
+
+
+/* ================================================= */
+/* MOBILE */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+    #contact {
+
+        min-height: auto;
+
+        padding:
+            80px 25px;
+    }
+
+
+    .contact-title {
+
+        margin-bottom: 40px;
+    }
+
+
+    .contact-title h2 {
+
+        font-size: 42px;
+    }
+
+
+    .contact-title p {
+
+        font-size: 17px;
+    }
+
+
+    .contact-card {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        padding: 35px 25px;
+
+        border-radius: 25px;
+    }
+
+
+    .contact-info h3 {
+
+        font-size: 38px;
+    }
+
+
+    .contact-info p {
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    .contact-form {
+
+        gap: 18px;
+    }
+
+
+    .contact-button {
+
+        width: 100%;
+    }
+}
+
+
+/* ================================================= */
+/* SMALL MOBILE */
+/* ================================================= */
+
+@media (max-width: 480px) {
+
+    #contact {
+
+        padding:
+            70px 18px;
+    }
+
+
+    .contact-title h2 {
+
+        font-size: 35px;
+    }
+
+
+    .contact-card {
+
+        padding: 30px 20px;
+
+        gap: 35px;
+
+        border-radius: 22px;
+    }
+
+
+    .contact-info h3 {
+
+        font-size: 32px;
+    }
+
+
+    .contact-info p {
+
+        font-size: 13px;
+    }
+
+
+    .contact-item {
+
+        font-size: 12px;
+
+        padding: 9px 12px;
+    }
+
+
+    .input-group input,
+    .input-group textarea {
+
+        font-size: 13px;
+
+        padding: 13px 14px;
+    }
+
+
+    .input-group textarea {
+
+        min-height: 110px;
+    }
+
+
+    .contact-button {
+
+        font-size: 13px;
+
+        padding: 13px 18px;
     }
 }

@@ -31,6 +31,24 @@
 </head>
 
 <body>
+    <div class="star-field">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <nav class="navbar">
         <div class="logo"><img src="./image/Icon.png" alt="Logo">
         <span class="headname">Senthamil Selvan.J</span>
@@ -47,6 +65,23 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        
+
+        <div class="theme-switch">
+
+            <input type="checkbox" id="theme-toggle">
+
+            <label for="theme-toggle" class="theme-slider">
+
+                <span class="theme-icon sun">☀</span>
+
+                <span class="theme-icon moon">☾</span>
+
+                <span class="theme-knob"></span>
+
+            </label>
+
+        </div>
     </nav>
 
     <section id="home"> 
@@ -61,14 +96,39 @@
 
     <section id="about">
 
+        <!-- Decorative background -->
+        <div class="about-glow about-glow-1"></div>
+        <div class="about-glow about-glow-2"></div>
+
+        <div class="about-particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <div class="about-content">
 
+            <!-- LEFT -->
             <div class="about-title">
+
+                <div class="about-line"></div>
+
                 <p>Get to know me</p>
-                <h2>About Me</h2>
+
+                <h2>
+                    About<br>
+                    Me
+                </h2>
+
             </div>
 
+
+            <!-- RIGHT -->
             <div class="about-text">
+
                 <p>
                     I'm Senthamil Selvan.J, a passionate developer who enjoys
                     building modern websites and exploring emerging technologies.
@@ -79,6 +139,7 @@
                     and continuously improving my skills through projects and
                     hands-on learning.
                 </p>
+
             </div>
 
         </div>
@@ -124,12 +185,6 @@
                     <i class="fa-brands fa-react"></i>
                     <h3>React</h3>
                     <p>Frontend Development</p>
-                </div>
-
-                <div class="skill-card">
-                    <i class="fa-brands fa-git-alt"></i>
-                    <h3>Git</h3>
-                    <p>Version Control</p>
                 </div>
 
                 <div class="skill-card">
@@ -290,6 +345,164 @@
         </div>
 
     </section>
+
+<!-- ================================================= -->
+<!-- CONTACT SECTION -->
+<!-- ================================================= -->
+
+<section id="contact">
+
+    <div class="contact-content">
+
+        <!-- TITLE -->
+
+        <div class="contact-title">
+
+            <p>Let's connect</p>
+
+            <h2>Contact Me</h2>
+
+        </div>
+
+
+        <!-- CONTACT GLASS CARD -->
+
+        <div class="contact-card">
+
+            <!-- LEFT SIDE -->
+
+            <div class="contact-info">
+
+                <h3>
+                    Let's work<br>
+                    together.
+                </h3>
+
+                <p>
+                    Have an idea, project or opportunity?
+                    Feel free to reach out. I'd love to
+                    hear from you.
+                </p>
+
+
+                <!-- EMAIL -->
+
+                <a href="mailto:selvagaming22@gmail.com"
+                
+                   class="contact-item">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <span>
+                        selvagaming22@gmail.com
+                    </span>
+
+                </a>
+
+
+                <!-- LINKEDIN -->
+
+                <a href="https://www.linkedin.com/in/senthamil-selvan-j/"
+                target="_blank" rel="noopener noreferrer"
+                   class="contact-item">
+
+                    <i class="fa-brands fa-linkedin"></i>
+
+                    <span>
+                        LinkedIn
+                    </span>
+
+                </a>
+
+
+                <!-- GITHUB -->
+
+                <a href="https://github.com/Senthamil735826"
+                target="_blank" rel="noopener noreferrer"
+                   class="contact-item">
+
+                    <i class="fa-brands fa-github"></i>
+
+                    <span>
+                        GitHub
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+
+            <form class="contact-form">
+
+                <div class="input-group">
+
+                    <label>Your Name</label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Your Email</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Your Message</label>
+
+                    <textarea
+                        name="message"
+                        placeholder="Tell me about your project..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="contact-button">
+
+                    <span class="button-text">
+                        Send Message
+                    </span>
+
+                    <span class="mail-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <!-- GLASS SHINE -->
+
+            <div class="contact-shine"></div>
+
+        </div>
+
+    </div>
+
+</section>
     <script src="script.js"></script>
 </body>
 </html>
