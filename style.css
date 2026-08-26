@@ -8,6 +8,778 @@ html {
 }
 
 /* ================================================= */
+/* PREMIUM PAGE LOADER */
+/* ================================================= */
+
+#page-loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.10),
+            transparent 35%
+        ),
+        #050505;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 99999;
+
+    overflow: hidden;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: all;
+
+    transition:
+        opacity 0.9s ease,
+        visibility 0.9s ease;
+
+}
+
+
+/* ================================================= */
+/* LOADER CONTENT */
+/* ================================================= */
+
+.loader-content {
+
+    position: relative;
+
+    text-align: center;
+
+    transform:
+        translateY(25px)
+        scale(0.96);
+
+    opacity: 0;
+
+    animation:
+        loaderContentIn
+        1s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* NAME */
+/* ================================================= */
+
+.loader-name {
+
+    font-family:
+        "Bona Nova SC",
+        serif;
+
+    font-size:
+        clamp(
+            35px,
+            6vw,
+            75px
+        );
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    white-space: nowrap;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8a6a00,
+            #d4af37,
+            #fff1a8,
+            #d4af37,
+            #8a6a00
+        );
+
+    background-size:
+        250% auto;
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+
+    animation:
+        loaderGold
+        3s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* ================================================= */
+/* GOLD LINE */
+/* ================================================= */
+
+.loader-line {
+
+    width: 0;
+
+    height: 2px;
+
+    margin:
+        18px
+        auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            #fff1a8,
+            #d4af37,
+            transparent
+        );
+
+    box-shadow:
+
+        0 0 10px
+        rgba(212, 175, 55, 0.8),
+
+        0 0 25px
+        rgba(212, 175, 55, 0.4),
+
+        0 0 45px
+        rgba(212, 175, 55, 0.2);
+
+    animation:
+        loaderLine
+        1.3s
+        0.4s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* SUBTITLE */
+/* ================================================= */
+
+.loader-subtitle {
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 6px;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    opacity: 0;
+
+    animation:
+        loaderSubtitle
+        0.8s
+        0.8s
+        ease
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* GOLD FLOW */
+/* ================================================= */
+
+@keyframes loaderGold {
+
+    0% {
+
+        background-position:
+            0% center;
+
+    }
+
+    50% {
+
+        background-position:
+            100% center;
+
+    }
+
+    100% {
+
+        background-position:
+            0% center;
+
+    }
+
+}
+
+
+/* ================================================= */
+/* CONTENT ENTER */
+/* ================================================= */
+
+@keyframes loaderContentIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.96);
+
+        filter:
+            blur(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* LINE ENTER */
+/* ================================================= */
+
+@keyframes loaderLine {
+
+    from {
+
+        width: 0;
+
+    }
+
+    to {
+
+        width:
+            min(
+                400px,
+                70vw
+            );
+
+    }
+
+}
+
+
+/* ================================================= */
+/* SUBTITLE ENTER */
+/* ================================================= */
+
+@keyframes loaderSubtitle {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+
+        filter:
+            blur(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* ================================================= */
+/* DUST EXIT */
+/* ================================================= */
+/* ================================================= */
+
+
+/* ================================================= */
+/* MAIN CONTENT DUST */
+/* ================================================= */
+
+#page-loader.dust-exit
+.loader-content {
+
+    animation:
+        contentDustExit
+        1.2s
+        cubic-bezier(.55, .06, .68, .19)
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* ACTUAL NAME DISAPPEARS */
+/* ================================================= */
+
+#page-loader.dust-exit
+.loader-name {
+
+    animation:
+        textDustExit
+        1.2s
+        cubic-bezier(.55, .06, .68, .19)
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* SUBTITLE DISAPPEARS */
+/* ================================================= */
+
+#page-loader.dust-exit
+.loader-subtitle {
+
+    animation:
+        subtitleDustExit
+        1s
+        ease
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* LINE DISAPPEARS */
+/* ================================================= */
+
+#page-loader.dust-exit
+.loader-line {
+
+    animation:
+        lineDustExit
+        0.8s
+        ease
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* CONTENT EXIT */
+/* ================================================= */
+
+@keyframes contentDustExit {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+
+    }
+
+    45% {
+
+        opacity: 0.75;
+
+        transform:
+            translateY(-5px)
+            scale(1.02);
+
+        filter:
+            blur(1px);
+
+    }
+
+    75% {
+
+        opacity: 0.35;
+
+        transform:
+            translateY(-15px)
+            scale(1.04);
+
+        filter:
+            blur(4px);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-35px)
+            scale(1.08);
+
+        filter:
+            blur(12px);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* LETTERS BREAK INTO DUST */
+/* ================================================= */
+
+@keyframes textDustExit {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+
+        letter-spacing: 8px;
+
+    }
+
+    25% {
+
+        opacity: 0.95;
+
+        transform:
+            translateY(-3px)
+            scale(1.01);
+
+        filter:
+            blur(1px);
+
+    }
+
+    50% {
+
+        opacity: 0.65;
+
+        transform:
+            translateY(-10px)
+            scale(1.02);
+
+        filter:
+            blur(2px);
+
+        letter-spacing: 11px;
+
+    }
+
+    75% {
+
+        opacity: 0.25;
+
+        transform:
+            translateY(-22px)
+            scale(1.04);
+
+        filter:
+            blur(6px);
+
+        letter-spacing: 17px;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-45px)
+            scale(1.08);
+
+        filter:
+            blur(15px);
+
+        letter-spacing: 25px;
+
+    }
+
+}
+
+
+/* ================================================= */
+/* SUBTITLE EXIT */
+/* ================================================= */
+
+@keyframes subtitleDustExit {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+
+    }
+
+    50% {
+
+        opacity: 0.5;
+
+        transform:
+            translateY(-10px);
+
+        filter:
+            blur(3px);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-30px);
+
+        filter:
+            blur(10px);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* LINE EXIT */
+/* ================================================= */
+
+@keyframes lineDustExit {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            scaleX(1);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scaleX(0);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* GOLD DUST PARTICLES */
+/* ================================================= */
+
+.dust-particle {
+
+    position: fixed;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff8cf 0%,
+            #fff1a8 20%,
+            #d4af37 55%,
+            transparent 100%
+        );
+
+    box-shadow:
+
+        0 0 4px
+        rgba(255, 241, 168, 0.95),
+
+        0 0 9px
+        rgba(212, 175, 55, 0.8),
+
+        0 0 18px
+        rgba(212, 175, 55, 0.35);
+
+    pointer-events: none;
+
+    z-index: 100001;
+
+    animation:
+        dustFly
+        1.4s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* DUST MOVEMENT */
+/* ================================================= */
+
+@keyframes dustFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0, 0)
+            scale(0);
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+        transform:
+            translate(0, 0)
+            scale(1);
+
+    }
+
+    45% {
+
+        opacity: 0.9;
+
+    }
+
+    75% {
+
+        opacity: 0.55;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* LOADER HIDDEN */
+/* ================================================= */
+
+#page-loader.loader-hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+/* ================================================= */
+/* MOBILE */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+    .loader-name {
+
+        font-size:
+            clamp(
+                28px,
+                8vw,
+                50px
+            );
+
+        letter-spacing: 4px;
+
+    }
+
+    .loader-subtitle {
+
+        font-size: 9px;
+
+        letter-spacing: 4px;
+
+    }
+
+}
+
+
+/* ================================================= */
+/* SMALL MOBILE */
+/* ================================================= */
+
+@media (max-width: 480px) {
+
+    .loader-name {
+
+        font-size: 25px;
+
+        letter-spacing: 3px;
+
+    }
+
+    .loader-subtitle {
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+
+    }
+
+}
+
+/* ================================================= */
 /* BODY BACKGROUND */
 /* ================================================= */
 
@@ -26,6 +798,316 @@ body {
     animation: backgroundMove 18s ease-in-out infinite;
 }
 
+/* ================================================= */
+/* PREMIUM PAGE LOADER */
+/* ================================================= */
+
+#page-loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.08),
+            transparent 35%
+        ),
+        #050505;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 99999;
+
+    overflow: hidden;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+
+}
+
+
+/* ================================================= */
+/* LOADER CONTENT */
+/* ================================================= */
+
+.loader-content {
+
+    position: relative;
+
+    text-align: center;
+
+    transform: translateY(20px);
+
+    opacity: 0;
+
+    animation:
+        loaderContentIn 1s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* NAME */
+/* ================================================= */
+
+.loader-name {
+
+    font-family:
+        "Bona Nova SC",
+        serif;
+
+    font-size: clamp(
+        35px,
+        6vw,
+        75px
+    );
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8a6a00,
+            #d4af37,
+            #fff1a8,
+            #d4af37,
+            #8a6a00
+        );
+
+    background-size: 250% auto;
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+
+    animation:
+        loaderGold 2s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* ================================================= */
+/* GOLD LINE */
+/* ================================================= */
+
+.loader-line {
+
+    width: 0;
+
+    height: 2px;
+
+    margin: 18px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            #fff1a8,
+            #d4af37,
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(212, 175, 55, 0.7),
+
+        0 0 25px
+        rgba(212, 175, 55, 0.35);
+
+    animation:
+        loaderLine 1.3s
+        0.4s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* SUBTITLE */
+/* ================================================= */
+
+.loader-subtitle {
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 6px;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    opacity: 0;
+
+    animation:
+        loaderSubtitle 0.8s
+        0.8s
+        ease
+        forwards;
+
+}
+
+
+/* ================================================= */
+/* GOLD ANIMATION */
+/* ================================================= */
+
+@keyframes loaderGold {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+
+}
+
+
+/* ================================================= */
+/* CONTENT IN */
+/* ================================================= */
+
+@keyframes loaderContentIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.96);
+
+        filter: blur(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* LINE ANIMATION */
+/* ================================================= */
+
+@keyframes loaderLine {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: min(400px, 70vw);
+    }
+
+}
+
+
+/* ================================================= */
+/* SUBTITLE ANIMATION */
+/* ================================================= */
+
+@keyframes loaderSubtitle {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ================================================= */
+/* LOADER EXIT */
+/* ================================================= */
+
+#page-loader.loader-hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+/* ================================================= */
+/* MOBILE */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+    .loader-name {
+
+        letter-spacing: 4px;
+
+    }
+
+    .loader-subtitle {
+
+        font-size: 9px;
+
+        letter-spacing: 4px;
+
+    }
+
+}
 
 /* ================================================= */
 /* BACKGROUND ANIMATION */
@@ -1489,7 +2571,7 @@ body.dark-mode {
     opacity: 1;
     transform: translateX(0);
 
-    font-size: 30px;
+    font-size: 20px;
 
     line-height: 1.8;
 
@@ -1549,30 +2631,111 @@ body.dark-mode {
     font-weight: 400;
     font-style: normal;
 }
+/* ================================================= */
+/* ABOUT - SPREAD TO CLOSE */
+/* ================================================= */
+
+.about-title,
+.about-text {
+    opacity: 0;
+    filter: blur(8px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 1.2s cubic-bezier(.22, 1, .36, 1),
+        filter 1s ease;
+}
 
 
 /* ================================================= */
-/* SCROLL ANIMATION */
+/* BEFORE ENTER */
 /* ================================================= */
-
-/* Only move elements after JS adds this class */
 
 #about:not(.about-visible) .about-title {
-    transform: translateX(-60px);
+    transform:
+        translateX(-180px)
+        scale(0.88);
 }
 
 #about:not(.about-visible) .about-text {
-    transform: translateX(60px);
+    transform:
+        translateX(180px)
+        scale(0.88);
 }
+
+
+/* ================================================= */
+/* ENTER - CLOSE TOGETHER */
+/* ================================================= */
 
 #about.about-visible .about-title {
-    transform: translateX(0);
+    opacity: 1;
+
+    transform:
+        translateX(0)
+        scale(1);
+
+    filter: blur(0);
 }
+
 
 #about.about-visible .about-text {
-    transform: translateX(0);
+    opacity: 1;
+
+    transform:
+        translateX(0)
+        scale(1);
+
+    filter: blur(0);
+}
+/* ================================================= */
+/* EXIT DOWN - OPEN OUTWARD */
+/* ================================================= */
+
+#about.about-exit-down .about-title {
+    opacity: 0;
+
+    transform:
+        translateX(-180px)
+        scale(0.88);
+
+    filter: blur(8px);
 }
 
+#about.about-exit-down .about-text {
+    opacity: 0;
+
+    transform:
+        translateX(180px)
+        scale(0.88);
+
+    filter: blur(8px);
+}
+
+
+/* ================================================= */
+/* EXIT UP - OPPOSITE */
+/* ================================================= */
+
+#about.about-exit-up .about-title {
+    opacity: 0;
+
+    transform:
+        translateX(-180px)
+        scale(0.88);
+
+    filter: blur(8px);
+}
+
+#about.about-exit-up .about-text {
+    opacity: 0;
+
+    transform:
+        translateX(180px)
+        scale(0.88);
+
+    filter: blur(8px);
+} 
 
 /* ================================================= */
 /* GOLD GLOW */
@@ -1857,7 +3020,6 @@ body.dark-mode {
     max-width: 1100px;
 }
 
-
 /* ============================= */
 /* SKILLS TITLE */
 /* ============================= */
@@ -1882,7 +3044,6 @@ body.dark-mode {
     margin: 10px 0;
 }
 
-
 /* ============================= */
 /* SKILLS GRID */
 /* ============================= */
@@ -1896,7 +3057,6 @@ body.dark-mode {
 
     perspective: 1200px;
 }
-
 
 /* ============================= */
 /* 3D GLASS CARD */
@@ -3105,6 +4265,7 @@ body.dark-mode .project-card .card-shine {
     }
 }
 
+
 /* ================================================= */
 /* CONTACT SECTION */
 /* ================================================= */
@@ -3334,21 +4495,24 @@ body.dark-mode .project-card .card-shine {
     top: 0;
     left: -100%;
 
-    width: 60%;
+    width: 30%;
     height: 100%;
 
-    background:
-        linear-gradient(
-            105deg,
-            transparent,
-            rgba(255, 255, 255, 0.16),
-            transparent
-        );
+    /* WHITE SHINE */
+    background: linear-gradient(
+        105deg,
+        transparent,
+        rgba(255, 255, 255, 0.30),
+        rgba(255, 255, 255, 0.12),
+        transparent
+    );
+
+    filter: blur(10px);
 
     transform: skewX(-25deg);
 
     transition:
-        left 1.0s ease;
+        left 0.8s ease;
 
     pointer-events: none;
 
@@ -3356,11 +4520,32 @@ body.dark-mode .project-card .card-shine {
 }
 
 
+/* ================================================= */
+/* CONTACT SHINE HOVER */
+/* ================================================= */
+
 .contact-card:hover .contact-shine {
 
     left: 140%;
 }
 
+
+/* ================================================= */
+/* DARK MODE - GOLD SHINE */
+/* ================================================= */
+
+body.dark-mode .contact-shine {
+
+    background: linear-gradient(
+        105deg,
+        transparent,
+        rgba(212, 175, 55, 0.75),
+        rgba(255, 215, 100, 0.45),
+        transparent
+    );
+
+    filter: blur(10px);
+}
 
 /* ================================================= */
 /* LEFT SIDE */
@@ -3717,7 +4902,7 @@ body.dark-mode .project-card .card-shine {
         linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.20),
             transparent
         );
 

@@ -1,3 +1,194 @@
+/* ================================================= */
+/* PREMIUM PAGE LOADER */
+/* ================================================= */
+
+const pageLoader =
+    document.getElementById("page-loader");
+
+
+if (pageLoader) {
+
+    setTimeout(() => {
+
+        createDustParticles();
+
+        pageLoader.classList.add(
+            "dust-exit"
+        );
+
+
+        /* Remove loader after animation */
+
+        setTimeout(() => {
+
+            pageLoader.classList.add(
+                "loader-hide"
+            );
+
+        }, 1200);
+
+    }, 3000);
+
+
+    /* Safety fallback */
+
+    setTimeout(() => {
+
+        pageLoader.style.opacity = "0";
+
+        pageLoader.style.visibility =
+            "hidden";
+
+        pageLoader.style.pointerEvents =
+            "none";
+
+    }, 5000);
+
+}
+
+
+/* ================================================= */
+/* CREATE GOLD DUST */
+/* ================================================= */
+
+function createDustParticles() {
+
+    const loader =
+        document.getElementById(
+            "page-loader"
+        );
+
+
+    const elements = [
+        document.querySelector(".loader-name"),
+        document.querySelector(".loader-subtitle"),
+        document.querySelector(".loader-line")
+    ];
+
+
+    elements.forEach(element => {
+
+        if (!element) return;
+
+
+        const rect =
+            element.getBoundingClientRect();
+
+
+        /* Number of particles */
+
+        const particleCount =
+            element.classList.contains(
+                "loader-name"
+            )
+                ? 100
+                : 30;
+
+
+        for (
+            let i = 0;
+            i < particleCount;
+            i++
+        ) {
+
+            const particle =
+                document.createElement(
+                    "span"
+                );
+
+
+            particle.className =
+                "dust-particle";
+
+
+            /* Random starting position */
+
+            const startX =
+                rect.left +
+                Math.random() *
+                rect.width;
+
+
+            const startY =
+                rect.top +
+                Math.random() *
+                rect.height;
+
+
+            particle.style.left =
+                startX + "px";
+
+
+            particle.style.top =
+                startY + "px";
+
+
+            /* Random dust direction */
+
+            const x =
+                (Math.random() - 0.5)
+                * 300;
+
+
+            const y =
+                -(
+                    Math.random() * 180
+                    + 40
+                );
+
+
+            particle.style.setProperty(
+                "--x",
+                `${x}px`
+            );
+
+
+            particle.style.setProperty(
+                "--y",
+                `${y}px`
+            );
+
+
+            /* Random particle size */
+
+            const size =
+                Math.random() * 3 + 1;
+
+
+            particle.style.width =
+                `${size}px`;
+
+
+            particle.style.height =
+                `${size}px`;
+
+
+            /* Random animation delay */
+
+            particle.style.animationDelay =
+                `${Math.random() * 0.25}s`;
+
+
+            loader.appendChild(
+                particle
+            );
+
+
+            /* Remove particle */
+
+            setTimeout(() => {
+
+                particle.remove();
+
+            }, 3000);
+
+        }
+
+    });
+
+}
+
+
 // ================================
 // HAMBURGER MENU
 // ================================
@@ -71,18 +262,61 @@ window.addEventListener("resize", () => {
 
 });
 
+/* ================================================= */
+/* DARK / LIGHT MODE */
+/* ================================================= */
+
 const themeToggle =
     document.getElementById("theme-toggle");
 
-themeToggle.addEventListener("change", () => {
+const savedTheme =
+    localStorage.getItem("theme");
 
-    document.body.classList.toggle(
-        "dark-mode",
-        themeToggle.checked
-    );
+/* Default = Dark Mode */
 
-});
+if (savedTheme !== "light") {
 
+    document.body.classList.add("dark-mode");
+
+    if (themeToggle) {
+        themeToggle.checked = true;
+    }
+
+    localStorage.setItem("theme", "dark");
+
+} else {
+
+    document.body.classList.remove("dark-mode");
+
+    if (themeToggle) {
+        themeToggle.checked = false;
+    }
+
+}
+
+/* Theme change */
+
+if (themeToggle) {
+
+    themeToggle.addEventListener("change", () => {
+
+        if (themeToggle.checked) {
+
+            document.body.classList.add("dark-mode");
+
+            localStorage.setItem("theme", "dark");
+
+        } else {
+
+            document.body.classList.remove("dark-mode");
+
+            localStorage.setItem("theme", "light");
+
+        }
+
+    });
+
+}
 // ================================
 // TYPING EFFECT
 // ================================
@@ -254,39 +488,135 @@ function typeEffect() {
 
 // Start typing
 typeEffect();
-
 /* ================================================= */
-/* ABOUT SCROLL REVEAL */
+/* ABOUT SCROLL ANIMATION */
 /* ================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+const aboutSection =
+    document.getElementById("about");
 
-    const aboutSection = document.getElementById("about");
+let lastScrollY =
+    window.scrollY;
 
-    if (!aboutSection) return;
+if (aboutSection) {
 
-    const observer = new IntersectionObserver(
-        (entries) => {
+    const aboutObserver =
+        new IntersectionObserver(
+            (entries) => {
 
-            entries.forEach((entry) => {
+                entries.forEach(entry => {
 
-                if (entry.isIntersecting) {
+                    if (entry.isIntersecting) {
 
-                    aboutSection.classList.add("about-visible");
+                        aboutSection.classList.remove(
+                            "about-exit-down",
+                            "about-exit-up"
+                        );
 
-                }
+                        aboutSection.classList.add(
+                            "about-visible"
+                        );
 
-            });
+                    }
 
-        },
-        {
-            threshold: 0.2
+                });
+
+            },
+            {
+                threshold: 0.25
+            }
+        );
+
+
+    aboutObserver.observe(
+        aboutSection
+    );
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            const currentScrollY =
+                window.scrollY;
+
+            const scrollingDown =
+                currentScrollY > lastScrollY;
+
+            const rect =
+                aboutSection.getBoundingClientRect();
+
+
+            /*
+             * SCROLLING DOWN
+             * About leaves toward opposite sides
+             */
+
+            if (
+                scrollingDown &&
+                rect.bottom < window.innerHeight * 0.2
+            ) {
+
+                aboutSection.classList.remove(
+                    "about-exit-up"
+                );
+
+                aboutSection.classList.add(
+                    "about-exit-down"
+                );
+
+            }
+
+
+            /*
+             * SCROLLING UP
+             * About leaves in opposite direction
+             */
+
+            if (
+                !scrollingDown &&
+                rect.top > window.innerHeight * 0.8
+            ) {
+
+                aboutSection.classList.remove(
+                    "about-exit-down"
+                );
+
+                aboutSection.classList.add(
+                    "about-exit-up"
+                );
+
+            }
+
+
+            /*
+             * About comes back into view
+             */
+
+            if (
+                rect.top < window.innerHeight * 0.75 &&
+                rect.bottom > window.innerHeight * 0.25
+            ) {
+
+                aboutSection.classList.remove(
+                    "about-exit-down",
+                    "about-exit-up"
+                );
+
+                aboutSection.classList.add(
+                    "about-visible"
+                );
+
+            }
+
+
+            lastScrollY =
+                currentScrollY;
+
         }
     );
 
-    observer.observe(aboutSection);
-
-});
+}
 
 /* ================================================= */
 /* CONTACT FORM */
@@ -295,65 +625,119 @@ document.addEventListener("DOMContentLoaded", () => {
 const contactForm =
     document.querySelector(".contact-form");
 
-
 const scriptURL =
-    "https://script.google.com/macros/s/AKfycbxA2Mxelo2J84iqbOKMhnYlINFe9ioWS-SOxzDuQviGEmq1Xt1pt7fRAE4HwvATlPLErQ/exec";
+    "https://script.google.com/macros/s/AKfycbwZe-lEqTDWf0MWHTYggv8XOcT3Z7Pu30NPQ1WmGvGeRRFzHDSoheOjmqvoAj_Xv9b2Bw/exec";
 
 
-contactForm.addEventListener(
-    "submit",
-    async function (event) {
+if (contactForm) {
 
-        event.preventDefault();
+    contactForm.addEventListener(
+        "submit",
+        function (event) {
 
-
-        const name =
-            document.querySelector(
-                'input[name="name"]'
-            ).value.trim();
+            event.preventDefault();
 
 
-        const email =
-            document.querySelector(
-                'input[name="email"]'
-            ).value.trim();
+            const nameInput =
+                contactForm.querySelector(
+                    'input[name="name"]'
+                );
+
+            const emailInput =
+                contactForm.querySelector(
+                    'input[name="email"]'
+                );
+
+            const messageInput =
+                contactForm.querySelector(
+                    'textarea[name="message"]'
+                );
+
+            const button =
+                contactForm.querySelector(
+                    ".contact-button"
+                );
 
 
-        const message =
-            document.querySelector(
-                'textarea[name="message"]'
-            ).value.trim();
+            const name =
+                nameInput.value.trim();
+
+            const email =
+                emailInput.value.trim();
+
+            const message =
+                messageInput.value.trim();
 
 
-        if (!name || !email || !message) {
+            /* ============================= */
+            /* VALIDATION */
+            /* ============================= */
 
-            alert(
-                "Please fill in all fields."
-            );
+            if (!name || !email || !message) {
 
-            return;
-        }
+                alert(
+                    "Please fill in all fields."
+                );
 
-
-        const button =
-            document.querySelector(
-                ".contact-button"
-            );
+                return;
+            }
 
 
-        const originalText =
-            button.innerHTML;
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-        button.disabled = true;
+            if (!emailPattern.test(email)) {
 
-        button.innerHTML =
-            "Sending...";
+                alert(
+                    "Please enter a valid email address."
+                );
+
+                return;
+            }
 
 
-        try {
+            /* ============================= */
+            /* SAVE DATA */
+            /* ============================= */
 
-            await fetch(
+            const formData = {
+
+                name: name,
+
+                email: email,
+
+                message: message
+
+            };
+
+
+            /* ============================= */
+            /* SHOW SENDING */
+            /* ============================= */
+
+            if (button) {
+
+                button.disabled = true;
+
+                button.innerHTML = `
+                    <span class="button-text">
+                        Sending...
+                    </span>
+
+                    <span class="mail-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </span>
+                `;
+
+            }
+
+
+            /* ============================= */
+            /* SEND TO GOOGLE */
+            /* ============================= */
+
+            fetch(
                 scriptURL,
                 {
                     method: "POST",
@@ -365,51 +749,68 @@ contactForm.addEventListener(
                             "text/plain;charset=utf-8"
                     },
 
-                    body: JSON.stringify({
+                    body: JSON.stringify(formData)
 
-                        name: name,
-
-                        email: email,
-
-                        message: message
-
-                    })
                 }
             );
 
 
-            /* SUCCESS */
-
-            contactForm.reset();
-
-
-            button.innerHTML =
-                "Message Sent ✓";
-
+            /* ============================= */
+            /* WAIT 4 SECONDS */
+            /* ============================= */
 
             setTimeout(() => {
 
-                button.innerHTML =
-                    originalText;
+                /* Clear form */
 
-                button.disabled = false;
-
-            }, 3000);
+                contactForm.reset();
 
 
-        } catch (error) {
+                /* Message Sent */
 
-            console.error(error);
+                if (button) {
+
+                    button.innerHTML = `
+                        <span class="button-text">
+                            Message Sent ✓
+                        </span>
+
+                        <span class="mail-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                    `;
+
+                }
 
 
-            button.innerHTML =
-                "Try Again";
+                /* ============================= */
+                /* RESTORE AFTER 3 SECONDS */
+                /* ============================= */
+
+                setTimeout(() => {
+
+                    if (button) {
+
+                        button.disabled = false;
+
+                        button.innerHTML = `
+                            <span class="button-text">
+                                Send Message
+                            </span>
+
+                            <span class="mail-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                        `;
+
+                    }
+
+                }, 3000);
 
 
-            button.disabled = false;
+            }, 4000);
 
         }
+    );
 
-    }
-);
-
+}
