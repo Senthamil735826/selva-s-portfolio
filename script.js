@@ -5,7 +5,6 @@
 const pageLoader =
     document.getElementById("page-loader");
 
-
 if (pageLoader) {
 
     setTimeout(() => {
@@ -16,18 +15,15 @@ if (pageLoader) {
             "dust-exit"
         );
 
-
-        /* Remove loader after animation */
-
         setTimeout(() => {
 
             pageLoader.classList.add(
                 "loader-hide"
             );
 
-        }, 1200);
+        }, 1000);
 
-    }, 3000);
+    }, 2000);
 
 
     /* Safety fallback */
@@ -35,14 +31,10 @@ if (pageLoader) {
     setTimeout(() => {
 
         pageLoader.style.opacity = "0";
+        pageLoader.style.visibility = "hidden";
+        pageLoader.style.pointerEvents = "none";
 
-        pageLoader.style.visibility =
-            "hidden";
-
-        pageLoader.style.pointerEvents =
-            "none";
-
-    }, 5000);
+    }, 3000);
 
 }
 
@@ -619,6 +611,36 @@ if (aboutSection) {
 }
 
 /* ================================================= */
+/* ABOUT ACCORDION */
+/* ================================================= */
+
+const aboutDetails =
+    document.querySelectorAll(".about-detail");
+
+aboutDetails.forEach(card => {
+
+    const header =
+        card.querySelector(".about-detail-header");
+
+    if (!header) return;
+
+    header.addEventListener("click", () => {
+
+        aboutDetails.forEach(otherCard => {
+
+            if (otherCard !== card) {
+                otherCard.classList.remove("open");
+            }
+
+        });
+
+        card.classList.toggle("open");
+
+    });
+
+});
+
+/* ================================================= */
 /* CONTACT FORM */
 /* ================================================= */
 
@@ -805,10 +827,10 @@ if (contactForm) {
 
                     }
 
-                }, 3000);
+                }, 1000);
 
 
-            }, 4000);
+            }, 2500);
 
         }
     );
