@@ -7,28 +7,43 @@ const pageLoader =
 
 if (pageLoader) {
 
+    /* ============================================= */
+    /* START LOADER EXIT */
+    /* ============================================= */
+
     setTimeout(() => {
 
-        createDustParticles();
+        /* Create particles before exit */
+        if (typeof createDustParticles === "function") {
+            createDustParticles();
+        }
 
-        pageLoader.classList.add(
-            "dust-exit"
-        );
+        /* Start smooth exit */
+        pageLoader.classList.add("dust-exit");
+
+
+        /* ========================================= */
+        /* COMPLETELY HIDE AFTER ANIMATION */
+        /* ========================================= */
 
         setTimeout(() => {
 
-            pageLoader.classList.add(
-                "loader-hide"
-            );
+            pageLoader.classList.add("loader-hide");
+
+            pageLoader.style.pointerEvents = "none";
 
         }, 1000);
 
     }, 2000);
 
 
-    /* Safety fallback */
+    /* ============================================= */
+    /* SAFETY FALLBACK */
+    /* ============================================= */
 
     setTimeout(() => {
+
+        pageLoader.classList.add("loader-hide");
 
         pageLoader.style.opacity = "0";
         pageLoader.style.visibility = "hidden";
@@ -37,7 +52,6 @@ if (pageLoader) {
     }, 3000);
 
 }
-
 
 /* ================================================= */
 /* CREATE GOLD DUST */
@@ -172,7 +186,7 @@ function createDustParticles() {
 
                 particle.remove();
 
-            }, 3000);
+            }, 2000);
 
         }
 
@@ -180,20 +194,102 @@ function createDustParticles() {
 
 }
 
-
 // ================================
 // HAMBURGER MENU
+// MOBILE / TABLET ONLY
 // ================================
 
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+if (window.innerWidth <= 1024) {
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navLinks.classList.toggle("active");
-});
+    const hamburger =
+        document.getElementById("hamburger");
+
+    const navLinks =
+        document.getElementById("navLinks");
+
+    const menuItems =
+        navLinks.querySelectorAll("a");
 
 
+    // ================================
+    // HOME ACTIVE BY DEFAULT
+    // ================================
+
+    menuItems.forEach(link => {
+        link.classList.remove("active");
+    });
+
+    const homeLink =
+        navLinks.querySelector('a[href="#home"]');
+
+    if (homeLink) {
+        homeLink.classList.add("active");
+    }
+
+
+    // ================================
+    // HAMBURGER OPEN / CLOSE
+    // ================================
+
+    hamburger.addEventListener("click", () => {
+
+        hamburger.classList.toggle("active");
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+    // ================================
+    // MENU ITEM CLICK
+    // ================================
+
+    menuItems.forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            // Remove active from all
+            menuItems.forEach(item => {
+                item.classList.remove("active");
+            });
+
+
+            // Make clicked item active
+            link.classList.add("active");
+
+
+            // ================================
+            // WAIT 2 SECONDS
+            // ================================
+
+            setTimeout(() => {
+
+                hamburger.classList.add("closing");
+
+                navLinks.classList.add("closing");
+
+
+                // ================================
+                // SMOOTH CLOSE
+                // ================================
+
+                setTimeout(() => {
+
+                    hamburger.classList.remove("active");
+                    hamburger.classList.remove("closing");
+
+                    navLinks.classList.remove("active");
+                    navLinks.classList.remove("closing");
+
+                }, 500);
+
+            }, 1000);
+
+        });
+
+    });
+
+}
 // ================================
 // NAVIGATION + SLIDING INDICATOR
 // ================================
