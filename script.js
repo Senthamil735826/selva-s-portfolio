@@ -290,6 +290,8 @@ if (window.innerWidth <= 1024) {
     });
 
 }
+
+
 // ================================
 // NAVIGATION + SLIDING INDICATOR
 // ================================
@@ -350,61 +352,64 @@ window.addEventListener("resize", () => {
 
 });
 
+
 /* ================================================= */
 /* DARK / LIGHT MODE */
 /* ================================================= */
 
-const themeToggle =
-    document.getElementById("theme-toggle");
+/*
+const themeToggle = 
+    document.getElementById("theme-toggle"); 
 
-const savedTheme =
-    localStorage.getItem("theme");
+const savedTheme = 
+    localStorage.getItem("theme"); 
 
-/* Default = Dark Mode */
+// Default = Dark Mode
 
-if (savedTheme !== "light") {
+if (savedTheme !== "light") { 
 
-    document.body.classList.add("dark-mode");
+    document.body.classList.add("dark-mode"); 
 
-    if (themeToggle) {
-        themeToggle.checked = true;
-    }
+    if (themeToggle) { 
+        themeToggle.checked = true; 
+    } 
 
-    localStorage.setItem("theme", "dark");
+    localStorage.setItem("theme", "dark"); 
 
-} else {
+} else { 
 
-    document.body.classList.remove("dark-mode");
+    document.body.classList.remove("dark-mode"); 
 
-    if (themeToggle) {
-        themeToggle.checked = false;
-    }
-
-}
-
-/* Theme change */
-
-if (themeToggle) {
-
-    themeToggle.addEventListener("change", () => {
-
-        if (themeToggle.checked) {
-
-            document.body.classList.add("dark-mode");
-
-            localStorage.setItem("theme", "dark");
-
-        } else {
-
-            document.body.classList.remove("dark-mode");
-
-            localStorage.setItem("theme", "light");
-
-        }
-
-    });
+    if (themeToggle) { 
+        themeToggle.checked = false; 
+    } 
 
 }
+
+// Theme change
+
+if (themeToggle) { 
+
+    themeToggle.addEventListener("change", () => { 
+
+        if (themeToggle.checked) { 
+
+            document.body.classList.add("dark-mode"); 
+            localStorage.setItem("theme", "dark"); 
+
+        } else { 
+
+            document.body.classList.remove("dark-mode"); 
+            localStorage.setItem("theme", "light"); 
+
+        } 
+
+    }); 
+
+}
+*/
+
+
 // ================================
 // TYPING EFFECT
 // ================================
@@ -418,7 +423,7 @@ const words = [
 
     {
         text: "Web developer.",
-        font: "Fondamento",
+        font: "datatype",
         weight: "Regular 400 italic"
     },
 
@@ -426,12 +431,6 @@ const words = [
         text: "AI enthusiast.",
         font: "cinzel",
         weight: "900"
-    },
-
-    {
-        text: "data scientist.",
-        font: "datatype",
-        weight: "700"
     },
 
     {

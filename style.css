@@ -233,7 +233,7 @@ html {
             scale(1);
 
         filter:
-            blur(0);about-details
+            blur(0);
 
     }
 
@@ -1544,8 +1544,9 @@ body {
         1px solid
         rgba(255, 255, 255, 0.45);
 
-    backdrop-filter: blur(15px);
+    
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
 
     color: white;
 
@@ -1651,8 +1652,8 @@ body.dark-mode
     background:
         rgba(255, 255, 255, 0.08);
 
-    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
 
     border:
         1px solid
@@ -1837,9 +1838,9 @@ span:nth-child(3) {
         REMOVE GLASS
         */
 
-        backdrop-filter: none;
-
         -webkit-backdrop-filter: none;
+
+        backdrop-filter: none;
 
         border:
             1px solid
@@ -2075,8 +2076,8 @@ span:nth-child(3) {
             rgba(255, 255, 255, 0.06)
         );
 
-    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
 
     border:
         1px solid rgba(255, 255, 255, 0.35);
@@ -3449,8 +3450,8 @@ body:not(.dark-mode) .hero-image-glow {
         rgba(255,255,255,0.04)
     );
 
-    backdrop-filter: blur(18px) saturate(150%);
     -webkit-backdrop-filter: blur(18px) saturate(150%);
+    backdrop-filter: blur(18px) saturate(150%);
 
     border: 1px solid rgba(255,255,255,0.22);
 
@@ -4455,8 +4456,8 @@ body.dark-mode
         rgba(255, 255, 255, 0.05)
     );
 
-    backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
 
     /* GLASS BORDER */
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -5305,9 +5306,9 @@ body.dark-mode .project-card .card-shine {
 
     border-radius: 20px;
 
-    backdrop-filter: blur(10px);
-
     -webkit-backdrop-filter: blur(10px);
+
+    backdrop-filter: blur(10px);
 }
 
 
@@ -5546,8 +5547,8 @@ body.dark-mode .project-card .card-shine {
 
         max-width: 100%;
 
-        backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
+        backdrop-filter: blur(25px);
     }
 
     /* Remove desktop tilt */
@@ -5687,8 +5688,8 @@ body.dark-mode .project-card .card-shine {
         max-width: 100%;
 
         /* Keep the glass effect */
-        backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
+        backdrop-filter: blur(25px);
     }
 
     /* Remove desktop tilt */
@@ -6024,7 +6025,7 @@ body.dark-mode .project-card .card-shine {
 
     grid-template-columns: 1fr 1.2fr;
 
-    gap: 60px;
+    gap: 40px;
 
     padding: 55px;
 
@@ -6037,11 +6038,11 @@ body.dark-mode .project-card .card-shine {
             rgba(255, 255, 255, 0.045)
         );
 
-    backdrop-filter:
+    -webkit-backdrop-filter:
         blur(25px)
         saturate(160%);
 
-    -webkit-backdrop-filter:
+    backdrop-filter:
         blur(25px)
         saturate(160%);
 
@@ -6382,10 +6383,10 @@ body.dark-mode .contact-shine {
     background:
         rgba(255, 255, 255, 0.07);
 
-    backdrop-filter:
+    -webkit-backdrop-filter:
         blur(10px);
 
-    -webkit-backdrop-filter:
+    backdrop-filter:
         blur(10px);
 
     color: white;
